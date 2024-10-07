@@ -16,7 +16,10 @@ builder.Services.AddSwaggerGen();
 
 //Add Api Settings services
 builder.Services.AddApiSettings();
- 
+
+// Add services to the container.
+builder.Services.AddHttpClient();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
