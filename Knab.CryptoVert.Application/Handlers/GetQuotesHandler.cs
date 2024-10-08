@@ -19,7 +19,7 @@ public class GetQuotesHandler(IHttpCaller httpCaller)
         };
 
         // Send the quote request and get the response.
-        var response = await httpCaller.Post(quoteRequest);
+        var response = await httpCaller.GetQuote(quoteRequest);
 
         // Map the HTTP response to a list of QuoteResponse objects and return it.
         return MapQuoteResponse(response);

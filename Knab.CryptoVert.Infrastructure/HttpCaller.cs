@@ -9,18 +9,12 @@ namespace Knab.CryptoVert.Infrastructure;
 public class HttpCaller(IOptions<ApiSettings> options, HttpClient httpClient) 
     : IHttpCaller
 {
-    public async Task Get()
+    public async Task<HttpResponseMessage> GetQuote(QuoteRequest? request)
     {
-        throw new NotImplementedException();
-    }
-
-    // TODO: Change to a Get method
-    //Implement the slug and convert variables/ parameters
-    public async Task<HttpResponseMessage> Post(QuoteRequest request)
-    {
+        ArgumentNullException.ThrowIfNull(request);
         
         var httpMessage = new HttpRequestMessage(HttpMethod.Get,
-            BuildQuery())
+            BuildQuery(request))
         {
             Headers =
             {
@@ -33,12 +27,12 @@ public class HttpCaller(IOptions<ApiSettings> options, HttpClient httpClient)
         return await Task.FromResult(httpResponseMessage);
     }
 
-    private string BuildQuery()
+    private string BuildQuery(QuoteRequest? request)
     {
         var query = new UriBuilder(new Uri(options.Value.Url))
         {
             Path = "cryptocurrency/quotes/latest",
-            Query = "slug=bitcoint&convert=USD,EUR,BRL,GBP,AUD"
+            Query = $"slug={request.Currency}&convert=USD,EUR,BRL,GBP,AUD"
         };
         
         return query.ToString();

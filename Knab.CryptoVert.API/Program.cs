@@ -15,7 +15,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 //Add Api Settings services
-builder.Services.AddApiSettings();
+builder.Services.AddApiSettings(builder.Configuration);
 
 // Add services to the container.
 builder.Services.AddHttpClient();
