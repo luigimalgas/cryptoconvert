@@ -1,8 +1,15 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace Knab.CryptoVert.Domain.Configuration;
 
 public class ApiSettings
 {
-    public string? Header { get; set; }
-    public string? Url { get; set; }
-    public string? ApiKey { get; set; }
+    [Required]
+    public string? Header { get; init; }
+    
+    [Required]
+    public string? Url { get; init; }
+    
+    [Required]
+    public string? ApiKey { get; init; }
 }
