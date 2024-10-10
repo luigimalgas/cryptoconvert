@@ -10,7 +10,7 @@ The project uses a clean code design and sticks to the SOLID principles.
 
 The project can be executed in 2 ways:
 
-1. Using the https run method from an IDE such as Visual Studio or Rider. This will open a localhost address with the swagger landing page
+1. Using the run/ debug project from an IDE such as Visual Studio or Rider. This will open a localhost address with the swagger landing page
 2. The solution can be deployed to IIS express on a local machine or server. The provided IIS web address can be used to access the swagger and extract the related calls
 
 ## Configuration
@@ -40,6 +40,9 @@ and replacing the Authorization header with the following (where [TOKEN] is the 
 
 Bearer [TOKEN]
 ```
+This can be done using the authorize button in swagger and providing the "Bearer [TOKEN]" attribute.
+
+![alt text](image.png)
 
 This is a very simple implementation for the sake of the POC. This can be expanded to use IAM and RBAC for added security
 
@@ -53,3 +56,5 @@ This is a very simple implementation for the sake of the POC. This can be expand
 - Mediatr
 - AutoFixture
 - Micriosoft IOptions
+
+
