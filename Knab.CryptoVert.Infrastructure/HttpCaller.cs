@@ -19,7 +19,7 @@ public class HttpCaller(IOptionsMonitor<ApiSettings> apiSettings, HttpClient htt
             Headers =
             {
                 { _apiSettings.CurrentValue.Header, _apiSettings.CurrentValue.ApiKey },
-                { "Accepts", "application/json" }
+                { "Accept", "application/json" }
             }
         };
         var httpResponseMessage = await httpClient.SendAsync(httpMessage);
@@ -31,8 +31,8 @@ public class HttpCaller(IOptionsMonitor<ApiSettings> apiSettings, HttpClient htt
     {
         var query = new UriBuilder(new Uri(_apiSettings.CurrentValue.Url))
         {
-            Path = "cryptocurrency/quotes/latest",
-            Query = $"slug={request.Currency}&convert=USD,EUR,BRL,GBP,AUD"
+            Path = "v2/cryptocurrency/quotes/latest", //parameterize this
+            Query = $"slug={request.Symbol}&convert=USD,EUR,BRL,GBP,AUD" //parameterize this too
         };
         
         return query.ToString();

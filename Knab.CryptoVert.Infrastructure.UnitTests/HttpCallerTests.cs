@@ -8,8 +8,6 @@ using Knab.CryptoVert.Infrastructure.Interfaces;
 using Knab.CryptoVert.Infrastructure.UnitTests.Utilities;
 using Microsoft.Extensions.Options;
 using NSubstitute;
-using NSubstitute.ExceptionExtensions;
-using NSubstitute.Extensions;
 
 namespace Knab.CryptoVert.Infrastructure.UnitTests;
 
@@ -19,6 +17,7 @@ public class HttpCallerTests
     private HttpClient _httpClient;
     private IHttpCaller _httpCaller;
     private Fixture _fixture;
+    private IOptionsMonitor<ApiSettings> _optionsMonitor;
     
     [TestInitialize]
     public void Setup()
@@ -33,11 +32,14 @@ public class HttpCallerTests
             Url = "https://api.example.com/",
             ApiKey = "YourApiKey"
         };
-        var iOptions = Options.Create(apiSettings);
+        
+        // Substitute IOptionsSnapshot
+        _optionsMonitor = Substitute.For<IOptionsMonitor<ApiSettings>>();
+        _optionsMonitor.CurrentValue.Returns(apiSettings);
         
         var messageHandler = new MockHttpMessageHandler();
         _httpClient = new HttpClient(messageHandler);
-        _httpCaller = Substitute.For<HttpCaller>(iOptions, _httpClient);
+        _httpCaller = Substitute.For<HttpCaller>(_optionsMonitor, _httpClient);
     }
 
     //test when no data is parsed to getquote

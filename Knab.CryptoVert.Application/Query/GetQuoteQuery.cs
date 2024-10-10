@@ -4,7 +4,7 @@ using MediatR;
 namespace Knab.CryptoVert.Application.Query;
 
 public class GetQuoteQuery
-    : IRequest<List<QuoteResponse>>
+    : IRequest<QuoteResponse>
 {
     public required string Currency { get; set; }
 }

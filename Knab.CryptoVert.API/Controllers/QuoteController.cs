@@ -5,23 +5,27 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Knab.CryptoVert.API.Controllers;
 
-//[Authorize]
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public class QuoteController(IMediator mediator, ILogger<QuoteController> logger)
     : ControllerBase
 {
-    private readonly IMediator _mediator = mediator;
     private readonly ILogger<QuoteController> _logger = logger;
     
     [HttpGet]
     [Route("{code}")]
+    [ProducesResponseType(200)]
+    [ProducesResponseType(400)]
     public async Task<ActionResult> GetQuote([FromRoute] string code)
     {
         var request = new GetQuoteQuery()
         {
             Currency = code
         };
-        return Ok(await _mediator.Send(request));
+
+        var result = await mediator.Send(request);
+        
+        return result != null ? Ok(result) : BadRequest(); //Include more return types and move it one level up
     }
 }
