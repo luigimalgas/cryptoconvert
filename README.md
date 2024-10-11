@@ -15,7 +15,7 @@ The project can be executed in 2 ways:
 
 ## Configuration
 
-The application uses the appsettings implementation and is based on an enviroment variable to determine which appsettings to use. In the project we have a **development** and **produiction** appsettings.
+The application uses the appsettings implementation and is based on an enviroment variable to determine which appsettings to use. In the project we have a **development** and **produiction** appsettings. The variable to determine which appsettings to use can be changed in the **launchsettings.json** file in the **properties** folder of the **Knab.CryptoVert.API**.
 
 The api endpoints and api keys can be configured in the above files. In order for the application to make calls to the external API it needs an API key for the above mentioned implementation. Once an API key is attained the **[API_KEY]** value can be replaced in the appsettings:
 
