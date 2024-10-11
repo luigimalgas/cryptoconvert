@@ -6,12 +6,14 @@ using MediatR;
 
 namespace Knab.CryptoVert.Application.Handlers;
 
-public class GetQuotesHandler(IHttpCaller httpCaller) 
+public class GetQuotesHandler(IHttpCaller? httpCaller) 
     : IRequestHandler<GetQuoteQuery, QuoteResponse>
 {
     // Handles the GetQuoteQuery and returns a list of QuoteResponse objects.
-    public async Task<QuoteResponse> Handle(GetQuoteQuery request, CancellationToken cancellationToken)
+    public async Task<QuoteResponse?> Handle(GetQuoteQuery? request, CancellationToken cancellationToken)
     {
+        QuoteResponseMapper mapper = new();
+        
         // Create a quote request using the currency from the request.
         var quoteRequest = new QuoteRequest
         {
@@ -22,6 +24,6 @@ public class GetQuotesHandler(IHttpCaller httpCaller)
         var response = await httpCaller.GetQuote(quoteRequest);
         
         // Map the HTTP response to a list of QuoteResponse objects and return it.
-        return response.IsSuccessStatusCode ? QuoteResponseMapper.Map(response) : null;
+        return response is { IsSuccessStatusCode: true } ? await mapper.Map(response) : null;
     }
 }

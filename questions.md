@@ -10,11 +10,13 @@
       - I would refactor the code comply more closely to SOLID principles, though it is quite robust right now it can be tweaked
       - A caching mechanism would also be beneficial in this case since the data does not update too often and if repeat calls are made within lets say a minute it can pull from there
       - Add a retry policy with exponential backoff
+      - Validation for domain
 
 2. What was the most useful feature that was added to the latest version of your language of choice?
    - nullability and more concise shorthand statements (e.g. if statements)
    - Seperating dependecy injections from the StartUp.cs file
    - IOptions for seperation of configuration usage in cross projects
+  
     ```c#
     using Knab.CryptoVert.Domain.Configuration;
     using Knab.CryptoVert.Infrastructure.Interfaces;
@@ -48,4 +50,9 @@
    - Through Application Insights you can also get a view of failing queries and the resons they would be failing and this can allow you to pinpoint problems and view in depth data on the cause of failures. 
    - Health monitoring gives you an overview of the overall healthy of an App service and this can identify hardware limitations or high load times, In this way you can increase the capacity by scaling the resource to fit the need of the application.
 
-4.  
+4.  What was the latest technical book you have read or tech conference you have been to? What did you learn?
+    - At the moment I am reading Clean Code b y Robert C. Martin. I have chosen to read it to solidify my understanding of clean code and the fundamentals or standards related to producing quality code.
+    - What I learnt from this book so far is that there are many aspects to consider when it comes to producing good quality clean code and there is no single right way of doing it but that we ened to adapt based on what we are building and how we haver chosen to build it. However there are guidleines and certain things that need to be in place to reach the desired goal.
+
+5. What do you think about this technical assessment?
+   - The assessment was good. I prefer these types of exercises over the online ones. These are more specific to seeing a persons coding styles and methodology

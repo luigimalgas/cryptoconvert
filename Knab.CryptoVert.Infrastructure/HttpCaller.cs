@@ -9,7 +9,7 @@ public class HttpCaller(IOptionsMonitor<ApiSettings> apiSettings, HttpClient htt
     : IHttpCaller
 {    
     private readonly IOptionsMonitor<ApiSettings> _apiSettings = apiSettings;
-    public async Task<HttpResponseMessage> GetQuote(QuoteRequest? request)
+    public async Task<HttpResponseMessage?> GetQuote(QuoteRequest? request)
     {
         ArgumentNullException.ThrowIfNull(request);
         

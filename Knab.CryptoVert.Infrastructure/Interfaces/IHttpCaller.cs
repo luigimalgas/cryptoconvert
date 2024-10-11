@@ -4,6 +4,6 @@ namespace Knab.CryptoVert.Infrastructure.Interfaces;
 
 public interface IHttpCaller
 {
-    public Task<HttpResponseMessage> GetQuote(QuoteRequest? request);
+    public Task<HttpResponseMessage?> GetQuote(QuoteRequest? request);
     
 }
