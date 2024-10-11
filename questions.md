@@ -56,3 +56,20 @@
 
 5. What do you think about this technical assessment?
    - The assessment was good. I prefer these types of exercises over the online ones. These are more specific to seeing a persons coding styles and methodology
+
+6. Please, describe yourself using JSON.
+   ```json
+    {
+        "name": "Luigi",
+        "surname": "Malgas",
+        "originating_country": "South Africa",
+        "residential_country": "Netherlands",
+        "hobbies":[
+            "Reading",
+            "Mountain biking",
+            "Gaming"
+        ],
+        "description": "A friendly individual also up for a good laugh or a good chat. I am open and caring and always willing to share my knowledge both technical and personal."
+    }
+
+   ```
